@@ -1,0 +1,33 @@
+<html>
+<head>
+</head>
+<script>
+    function getDevices(){
+        document.getElementById("content").innerHTML = Android.getPairedDevices()+"<br><br>"+document.getElementById("content").innerHTML;
+    }
+
+    function deviceFound(device){
+        document.getElementById("content").innerHTML = device+"<br><br>"+document.getElementById("content").innerHTML;
+    }
+
+    function connect(){
+        Android.connect(document.getElementById("deviceSelected").value);
+    }
+
+    function onAndroidError(errorJson){
+        document.getElementById("content").innerHTML = errorJson+"<br><br>"+document.getElementById("content").innerHTML;
+    }
+
+
+
+</script>
+<body>
+<p>This file was loaded in a webview locally</p>
+<input onClick="getDevices()" type="button" value="Find Paired Devices"/>
+<br>
+<input onClick="Android.findDevices()" type="button" value="Find new Devices"/>
+<br>
+<input id="deviceSelected" type="text"><input onClick="connect()" type="button" value="Connect"/>
+<div id="content" style="overflow-y: scroll;">Nothing</div>
+</body>
+</html>
