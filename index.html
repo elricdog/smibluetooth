@@ -67,9 +67,9 @@
             <div id="content" style="overflow-y: scroll;">Nothing</div>
         </div>
 
-        <div id="logger">
+        <pre id="logger">
 
-        </div>
+        </pre>
 
 
     </div>
@@ -117,7 +117,7 @@
 
             const devices_select = document.getElementById("devices_select");
 
-            const obj = JSON.parse(json);
+            const obj = JSON.parse(device);
 
             const option = document.createElement("option");
             option.textContent = obj.name;
