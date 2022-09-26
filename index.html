@@ -42,7 +42,7 @@
             padding: 5px 5px;
             margin-bottom: 5px;
             background-color: #DDDDDD;
-            border:1px solid #CCC;
+            border: 1px solid #CCC;
 
 
 
@@ -50,6 +50,16 @@
 
         .main .content .row:nth-child(even) {
             background-color: #f2f2f2;
+        }
+
+        .main .controls .newDevicesButton {
+            width: 100%;
+
+        }
+
+        .main .controls .messages {
+            margin-top: 30px;
+
         }
     </style>
 
@@ -66,13 +76,13 @@
                 <input onClick="getDevices()" type="button" value="Find Paired Devices" />
             </div> -->
             <div>
-                <input onClick="getNewDevices()" type="button" value="Find new Devices" />
+                <input onClick="getNewDevices()" class="newDevicesButton" type="button" value="Find new Devices" />
             </div>
-            <div>
+            <!--       <div>
                 <input id="deviceSelected" type="text"><input onClick="connect()" type="button" value="Connect" />
-            </div>
+            </div> -->
 
-            <div>
+            <div class="messages">
                 <input id="message" type="text"><input onClick="sendMessage()" type="button" value="Send message" />
             </div>
 
@@ -108,6 +118,12 @@
                 div.innerText = `${element.name} - ${element.address}`;
                 div.rel = element.address;
                 div.className = "row";
+
+                div.addEventListener("click", () => {
+
+                    connect(element.address);
+
+                })
                 content.appendChild(div);
             });
 
@@ -137,6 +153,12 @@
             div.textContent = obj.name + ' - ' + obj.address;
             div.value = obj.address;
             div.className = "row";
+
+            div.addEventListener("click", () => {
+
+                connect(obj.address);
+
+            })
             content.appendChild(div);
 
 
@@ -145,8 +167,8 @@
             //    document.getElementById("content").innerHTML = device + "<br><br>" + document.getElementById("content").innerHTML;
         }
 
-        function connect() {
-            Android.connect(document.getElementById("deviceSelected").value);
+        function connect(device) {
+            Android.connect(device);
         }
 
         function sendMessage() {
