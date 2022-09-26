@@ -12,15 +12,6 @@
     <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1, maximum-scale=1, viewport-fit=cover, shrink-to-fit=no">
     <style>
-        html,
-        body {
-
-            margin: 0 0;
-            height: 100%;
-            font-family: Arial, Helvetica, sans-serif;
-
-        }
-
         body {
 
             margin: 0 0;
@@ -28,26 +19,9 @@
         }
 
         .main {
-            margin: 0 0;
+            margin: 15px 15px;
             display: flex;
             flex-direction: column;
-            height: 100%;
-            background-color: white;
-        }
-
-        .main .header {
-            background-color: cadetblue;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
-        }
-
-
-        .main .header .title {
-            font-size: 2vw;
-            text-transform: uppercase;
-
         }
 
         .main .controls {
@@ -144,11 +118,7 @@
 <body>
 
     <div class="main">
-        <div class="header">
-            <span class="title">dispositivos disponibles </span>
-            <button class="btn">&larr;</button>
 
-        </div>
         <div class="controls">
 
             <!--          <div>
@@ -168,7 +138,7 @@
         </div>
 
         <div class="content" id="content">
-            <span class="loader"></span>
+          <!--   <span class="loader"></span> -->
             <div class="devices" id="devices">
             </div>
         </div>
@@ -308,8 +278,10 @@
             getDevices();
 
         })
-
-
+/* 
+        [14:19, 26/9/2022] Oriol: SMI2000-BT-
+[14:19, 26/9/2022] Oriol: SMI2000-BT-XX.XX.XX.XX.XX.XX
+[14:19, 26/9/2022] Oriol: Dallas = XX.XX.XX.XX.XX.XX */
     </script>
 
 </body>

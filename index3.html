@@ -34,116 +34,168 @@
 
         }
 
-        .main .start {
+        .main .start-layer {
             display: flex;
             flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            background-color: white;
+
+        }
+
+        .main .start-layer .btn {
+            font-size: 8vw;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: ghostwhite;
+            border: 1px solid #CCC;
+        }
+
+        .main .process-layer {
+            display: none;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
             height: 100%;
             background-color: white;
         }
 
-        .main .header {
-            background-color: cadetblue;
+        .main .process-layer .content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            width: 100%;
+        }
+
+        .main .process-layer .content .top {
+            width: 100%;
+            text-align: right;
+
+        }
+
+        .main .process-layer .content .top .btn {
+
+            font-size: 4vw;
+            display: block;
+            margin-top: 10px;
+            margin-right: 10px;
+            color: #AAA;
+            text-decoration: underline;
+
+        }
+
+        .main .process-layer .content .center {
+
+            flex-grow: 1;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+
+        }
+
+        .main .process-layer .content .center .loader {
+            color: #CCC;
+            position: relative;
+            font-size: 11px;
+            background: #CCC;
+            animation: escaleY 1s infinite ease-in-out;
+            width: 1em;
+            height: 4em;
+            animation-delay: -0.16s;
+        }
+
+        .main .process-layer .content .center .loader:before,
+        .main .process-layer .content .center .loader:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 2em;
+            background: #CCC;
+            width: 1em;
+            height: 4em;
+            animation: escaleY 1s infinite ease-in-out;
+        }
+
+        .main .process-layer .content .center .loader:before {
+            left: -2em;
+            animation-delay: -0.32s;
+        }
+
+        @keyframes escaleY {
+
+            0%,
+            80%,
+            100% {
+                box-shadow: 0 0;
+                height: 4em;
+            }
+
+            40% {
+                box-shadow: 0 -2em;
+                height: 5em;
+            }
+        }
+
+
+        .main .process-layer .header {
             display: flex;
             flex-direction: row;
             justify-content: space-around;
             align-items: center;
+            height: 10%;
+            width: 100%;
+            background-color: midnightblue;
+        }
+
+        .main .process-layer .header .logo {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .main .process-layer .header .logo img {
+            height: 70%;
+            width: auto;
+
+        }
+
+        .main .process-layer .header .title {
+            flex-grow: 1;
+            font-size: 4vw;
+            color: white;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        .main .process-layer .header .back {
+            flex-grow: 1;
         }
 
 
-        .main .header .title {
-            font-size: 2vw;
-            text-transform: uppercase;
-
-            .main .header .btn {
-                font-size: 2vw;
-            }
-
-            .main .controls {
-                display: flex;
-                flex-direction: column;
-            }
-
-            .main .content {
-                flex-grow: 1;
-            }
-
-            .main .content .devices {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                justify-content: flex-start;
-                overflow-y: scroll;
-            }
-
-            .main .content .devices .row {
-                padding: 5px 5px;
-                margin-bottom: 5px;
-                background-color: #DDDDDD;
-                border: 1px solid #CCC;
-                width: 100%;
-                text-align: center;
-
-            }
-
-            .main .content .devices .row:nth-child(even) {
-                background-color: #f2f2f2;
-            }
-
-            .main .controls .newDevicesButton {
-                width: 100%;
-
-            }
-
-            .main .controls .messages {
-                margin-top: 30px;
-
-            }
+        .main .process-layer .content .bottom {
+            width: 100%;
+            height: 10%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: whitesmoke;
+        }
 
 
-            /*LOADER*/
+        .main .process-layer .content .bottom .text {
+            color: slategray;
 
-            .loader {
-                color: #FFF;
-                position: relative;
-                font-size: 11px;
-                background: #FFF;
-                animation: escaleY 1s infinite ease-in-out;
-                width: 1em;
-                height: 4em;
-                animation-delay: -0.16s;
-            }
-
-            .loader:before,
-            .loader:after {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 2em;
-                background: #FFF;
-                width: 1em;
-                height: 4em;
-                animation: escaleY 1s infinite ease-in-out;
-            }
-
-            .loader:before {
-                left: -2em;
-                animation-delay: -0.32s;
-            }
-
-            @keyframes escaleY {
-
-                0%,
-                80%,
-                100% {
-                    box-shadow: 0 0;
-                    height: 4em;
-                }
-
-                40% {
-                    box-shadow: 0 -2em;
-                    height: 5em;
-                }
-            }
+        }
     </style>
 
 </head>
@@ -152,44 +204,51 @@
 <body>
 
     <div class="main">
-        <div class="header">
-            <span class="title">dispositivos disponibles </span>
-            <button class="btn">&larr;</button>
 
+        <div class="start-layer" id="startLayer">
+            <img src="https://raw.githubusercontent.com/elricdog/smibluetooth/main/images/logo.png" />
+            <button class="btn" id="startButton">INICIAR</button>
         </div>
-        <div class="controls">
-
-            <!--          <div>
-                <input onClick="getDevices()" type="button" value="Find Paired Devices" />
-            </div> -->
-            <div>
-                <input onClick="getNewDevices()" class="newDevicesButton" type="button" value="Find new Devices" />
+        <div class="process-layer" id="processLayer">
+            <div class="header">
+                <div class="logo">
+                    <img src="https://raw.githubusercontent.com/elricdog/smibluetooth/main/images/logo.png" />
+                </div>
+                <div class="title">dispositivos disponibles </div>
             </div>
-            <!--       <div>
-                <input id="deviceSelected" type="text"><input onClick="connect()" type="button" value="Connect" />
-            </div> -->
+            <div class="content">
+                <div class="top"><span class="btn" id="cancelButton">cancelar</span></div>
+                <div class="center"><span class="loader"></span></div>
+                <div class="bottom"><span class="text" id="processMessage">Preparando</span></div>
 
-            <div class="messages">
-                <input id="message" type="text"><input onClick="sendMessage()" type="button" value="Send message" />
-            </div>
-
-        </div>
-
-        <div class="content" id="content">
-            <span class="loader"></span>
-            <div class="devices" id="devices">
             </div>
         </div>
-
-        <pre id="logger">
-
-        </pre>
-
 
     </div>
 
 
     <script>
+
+        var devicesList = [];
+
+        function start() {
+
+            const startLayer = document.getElementById("startLayer");
+            startLayer.style.display = "none";
+
+            const processLayer = document.getElementById("processLayer");
+            processLayer.style.display = "flex";
+
+            getNewDevices();
+        }
+        function cancelProcessing() {
+
+            const startLayer = document.getElementById("startLayer");
+            startLayer.style.display = "flex";
+
+            const processLayer = document.getElementById("processLayer");
+            processLayer.style.display = "none";
+        }
         function cleanDevicesList() {
 
             const devices = document.getElementById("devices")
@@ -218,42 +277,51 @@
             });
 
         }
-        function getDevices() {
-
-            const json = Android.getPairedDevices();
-
-            listDevices(json);
-
-
-            //  document.getElementById("content").innerHTML = Android.getPairedDevices() + "<br><br>" + document.getElementById("content").innerHTML;
-        }
+        /*         function getDevices() {
+        
+                    const json = Android.getPairedDevices();
+        
+                    listDevices(json);
+        
+        
+                    //  document.getElementById("content").innerHTML = Android.getPairedDevices() + "<br><br>" + document.getElementById("content").innerHTML;
+                } */
         function getNewDevices() {
-            cleanDevicesList();
+            // cleanDevicesList();
 
             Android.findDevices();
+        }
+        function setProcessingMessage(msg) {
+
+            const processMessage = document.getElementById("processMessage");
+            processMessage.innerText = `Procesando ${devicesList.length} máquinas`;
+
         }
 
         function deviceFound(device) {
             console.log("deviceFound" + device);
 
-            const devices = document.getElementById("devices");
 
             const obj = JSON.parse(device);
 
-            const div = document.createElement("div");
-            div.textContent = obj.name + ' - ' + obj.address;
-            div.value = obj.address;
-            div.className = "row";
+            devicesList.push(obj);
 
-            div.addEventListener("click", () => {
-
-                connect(obj.address);
-
-            })
-            devices.appendChild(div);
-
-
-
+            setProcessingMessage(`Procesando ${devicesList.length} máquinas`);
+            /* 
+                        const devices = document.getElementById("devices");
+            
+            
+                        const div = document.createElement("div");
+                        div.textContent = obj.name + ' - ' + obj.address;
+                        div.value = obj.address;
+                        div.className = "row";
+            
+                        div.addEventListener("click", () => {
+            
+                            connect(obj.address);
+            
+                        })
+                        devices.appendChild(div); */
 
             //    document.getElementById("content").innerHTML = device + "<br><br>" + document.getElementById("content").innerHTML;
         }
@@ -313,7 +381,16 @@
 
         window.addEventListener("load", () => {
 
-            getDevices();
+            const startButton = document.getElementById("startButton");
+
+            startButton.addEventListener("click", start);
+
+            const cancelButton = document.getElementById("cancelButton");
+
+            cancelButton.addEventListener("click", cancelProcessing);
+
+
+            //getDevices();
 
         })
 
