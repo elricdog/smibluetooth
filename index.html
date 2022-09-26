@@ -37,6 +37,12 @@
             justify-content: flex-start;
             overflow-y: scroll;
         }
+
+        .main .content .row {
+            padding: 5px 5px;
+            margin-bottom: 5px;
+
+        }
     </style>
 
 </head>
@@ -48,18 +54,14 @@
 
         <div class="controls">
 
-            <div>
+            <!--          <div>
                 <input onClick="getDevices()" type="button" value="Find Paired Devices" />
-            </div>
+            </div> -->
             <div>
                 <input onClick="getNewDevices()" type="button" value="Find new Devices" />
             </div>
             <div>
                 <input id="deviceSelected" type="text"><input onClick="connect()" type="button" value="Connect" />
-            </div>
-
-            <div>
-                <select id="devices_select" multiple size="6"></select>
             </div>
 
             <div>
@@ -97,6 +99,7 @@
                 const div = document.createElement("div");
                 div.innerText = `${element.name} - ${element.address}`;
                 div.rel = element.address;
+                div.class = "row";
                 content.appendChild(div);
             });
 
@@ -125,6 +128,7 @@
             const div = document.createElement("div");
             div.textContent = obj.name + ' - ' + obj.address;
             div.value = obj.address;
+            div.class = "row";
             content.appendChild(div);
 
 
