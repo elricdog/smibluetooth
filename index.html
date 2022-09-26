@@ -95,7 +95,7 @@
 
             list.forEach(element => {
                 const div = document.createElement("div");
-                div.innerText = `${element.name} - ${element.address}` ;
+                div.innerText = `${element.name} - ${element.address}`;
                 div.rel = element.address;
                 content.appendChild(div);
             });
@@ -123,14 +123,14 @@
             const obj = JSON.parse(device);
 
             const div = document.createElement("div");
-            div.textContent = obj.name;
+            div.textContent = obj.name + ' - ' + obj.address;
             div.value = obj.address;
             content.appendChild(div);
 
 
 
 
-        //    document.getElementById("content").innerHTML = device + "<br><br>" + document.getElementById("content").innerHTML;
+            //    document.getElementById("content").innerHTML = device + "<br><br>" + document.getElementById("content").innerHTML;
         }
 
         function connect() {
@@ -186,7 +186,7 @@
         console.error = console.debug = console.info = console.log;
 
 
-        window.addEventListener("load", () =>{
+        window.addEventListener("load", () => {
 
             getDevices();
 
