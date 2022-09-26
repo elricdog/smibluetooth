@@ -21,7 +21,7 @@
 
         .main .controls {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
         }
 
         .main .content {
@@ -40,9 +40,11 @@
 
             <div>
                 <input onClick="getDevices()" type="button" value="Find Paired Devices" />
+                <select id="paired_devices_select"></select>
             </div>
             <div>
                 <input onClick="Android.findDevices()" type="button" value="Find new Devices" />
+                <select id="new_devices_select"></select>
             </div>
             <div>
                 <input id="deviceSelected" type="text"><input onClick="connect()" type="button" value="Connect" />
@@ -58,7 +60,7 @@
         </div>
 
         <div id="logger">
-            
+
         </div>
 
 
@@ -67,7 +69,22 @@
 
     <script>
         function getDevices() {
-            document.getElementById("content").innerHTML = Android.getPairedDevices() + "<br><br>" + document.getElementById("content").innerHTML;
+
+            const paired_devices_select = document.getElementById("paired_devices_select")
+            paired_devices_select.innerHTML = "";
+
+            const json = Android.getPairedDevices();
+
+            const list = JSON.parse(json);
+
+            list.forEach(element => {
+                const option = document.createElement("option");
+                option.textContent = element.name;
+                option.value = element.address;
+                paired_devices_select.appendChild(option);
+            });
+
+            //  document.getElementById("content").innerHTML = Android.getPairedDevices() + "<br><br>" + document.getElementById("content").innerHTML;
         }
 
         function deviceFound(device) {
