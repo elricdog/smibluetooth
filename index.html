@@ -1,46 +1,134 @@
+<!doctype html>
 <html>
+
 <head>
+    <meta charset="utf-8" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1, maximum-scale=1, viewport-fit=cover, shrink-to-fit=no">
+    <style>
+        body {
+
+            margin: 0 0;
+
+        }
+
+        .main {
+            margin: 15px 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main .controls {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .main .content {
+            flex-grow: 1;
+        }
+    </style>
+
 </head>
-<script>
-    function getDevices(){
-        document.getElementById("content").innerHTML = Android.getPairedDevices()+"<br><br>"+document.getElementById("content").innerHTML;
-    }
 
-    function deviceFound(device){
-        document.getElementById("content").innerHTML = device+"<br><br>"+document.getElementById("content").innerHTML;
-    }
 
-    function connect(){
-        Android.connect(document.getElementById("deviceSelected").value);
-    }
-
-    function sendMessage(){
-        Android.sendMessage(document.getElementById("message").value);
-    }
-
-    function onAndroidError(errorJson){
-        document.getElementById("content").innerHTML = errorJson+"<br><br>"+document.getElementById("content").innerHTML;
-    }
-
-    function onAndroidConnected(){
-        document.getElementById("content").innerHTML = "CONNECTED!!!!<br><br>"+document.getElementById("content").innerHTML;
-    }
-
-    function onAndroidMessageReceived(message){
-        document.getElementById("content").innerHTML = message+"<br><br>"+document.getElementById("content").innerHTML;
-    }
-
-</script>
 <body>
-<p>This file was loaded from Github.</p>
-<input onClick="getDevices()" type="button" value="Find Paired Devices"/>
-<br>
-<input onClick="Android.findDevices()" type="button" value="Find new Devices"/>
-<br>
-<input id="deviceSelected" type="text"><input onClick="connect()" type="button" value="Connect"/>
-<br>
-<input id="message" type="text"><input onClick="sendMessage()" type="button" value="Send message"/>
-<br>
-<div id="content" style="overflow-y: scroll;">Nothing</div>
+
+    <div class="main">
+
+        <div class="controls">
+
+            <div>
+                <input onClick="getDevices()" type="button" value="Find Paired Devices" />
+            </div>
+            <div>
+                <input onClick="Android.findDevices()" type="button" value="Find new Devices" />
+            </div>
+            <div>
+                <input id="deviceSelected" type="text"><input onClick="connect()" type="button" value="Connect" />
+            </div>
+            <div>
+                <input id="message" type="text"><input onClick="sendMessage()" type="button" value="Send message" />
+            </div>
+
+        </div>
+
+        <div class="content">
+            <div id="content" style="overflow-y: scroll;">Nothing</div>
+        </div>
+
+        <div id="logger">
+            
+        </div>
+
+
+    </div>
+
+
+    <script>
+        function getDevices() {
+            document.getElementById("content").innerHTML = Android.getPairedDevices() + "<br><br>" + document.getElementById("content").innerHTML;
+        }
+
+        function deviceFound(device) {
+            document.getElementById("content").innerHTML = device + "<br><br>" + document.getElementById("content").innerHTML;
+        }
+
+        function connect() {
+            Android.connect(document.getElementById("deviceSelected").value);
+        }
+
+        function sendMessage() {
+            Android.sendMessage(document.getElementById("message").value);
+        }
+
+        function onAndroidError(errorJson) {
+            document.getElementById("content").innerHTML = errorJson + "<br><br>" + document.getElementById("content").innerHTML;
+        }
+
+        function onAndroidConnected() {
+            document.getElementById("content").innerHTML = "CONNECTED!!!!<br><br>" + document.getElementById("content").innerHTML;
+        }
+
+        function onAndroidMessageReceived(message) {
+            document.getElementById("content").innerHTML = message + "<br><br>" + document.getElementById("content").innerHTML;
+        }
+
+
+
+        // Log Console
+        function addZero(x, n) {
+            while (x.toString().length < n) {
+                x = "0" + x;
+            }
+            return x;
+        }
+
+        var logger = document.getElementById("logger");
+        if (typeof console != "undefined")
+            if (typeof console.log != 'undefined')
+                console.olog = console.log;
+            else
+                console.olog = function () { };
+
+        console.log = function (message) {
+            console.olog(message);
+            var d = new Date();
+            var x = document.getElementById("demo");
+            var h = addZero(d.getHours(), 2);
+            var m = addZero(d.getMinutes(), 2);
+            var s = addZero(d.getSeconds(), 2);
+            var ms = addZero(d.getMilliseconds(), 3);
+
+            logger.innerHTML = "[" + h + ":" + m + ":" + s + ":" + ms + "] " + message + "\n" + logger.innerHTML;
+
+        };
+
+        console.error = console.debug = console.info = console.log;
+
+
+    </script>
+
 </body>
+
 </html>
