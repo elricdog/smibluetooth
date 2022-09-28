@@ -2,39 +2,7 @@
 
 <head>
 </head>
-<script>
 
-    window.location.href = 'https://smibluetooth.smi2000.net:7989/index.html';
-/* 
-    function getDevices() {
-        document.getElementById("content").innerHTML = Android.getPairedDevices() + "<br><br>" + document.getElementById("content").innerHTML;
-    }
-
-    function deviceFound(device) {
-        document.getElementById("content").innerHTML = device + "<br><br>" + document.getElementById("content").innerHTML;
-    }
-
-    function connect() {
-        Android.connect(document.getElementById("deviceSelected").value);
-    }
-
-    function sendMessage() {
-        Android.sendMessage(document.getElementById("message").value);
-    }
-
-    function onAndroidError(errorJson) {
-        document.getElementById("content").innerHTML = errorJson + "<br><br>" + document.getElementById("content").innerHTML;
-    }
-
-    function onAndroidConnected() {
-        document.getElementById("content").innerHTML = "CONNECTED!!!!<br><br>" + document.getElementById("content").innerHTML;
-    }
-
-    function onAndroidMessageReceived(message) {
-        document.getElementById("content").innerHTML = message + "<br><br>" + document.getElementById("content").innerHTML;
-    } */
-
-</script>
 
 <body>
     REDIRECCIONANDO
@@ -48,6 +16,40 @@
     <input id="message" type="text"><input onClick="sendMessage()" type="button" value="Send message" />
     <br>
     <div id="content" style="overflow-y: scroll;">Nothing</div> -->
+
+    <script>
+
+        window.location.href = 'https://smibluetooth.smi2000.net:7989/index.html';
+    /* 
+        function getDevices() {
+            document.getElementById("content").innerHTML = Android.getPairedDevices() + "<br><br>" + document.getElementById("content").innerHTML;
+        }
+    
+        function deviceFound(device) {
+            document.getElementById("content").innerHTML = device + "<br><br>" + document.getElementById("content").innerHTML;
+        }
+    
+        function connect() {
+            Android.connect(document.getElementById("deviceSelected").value);
+        }
+    
+        function sendMessage() {
+            Android.sendMessage(document.getElementById("message").value);
+        }
+    
+        function onAndroidError(errorJson) {
+            document.getElementById("content").innerHTML = errorJson + "<br><br>" + document.getElementById("content").innerHTML;
+        }
+    
+        function onAndroidConnected() {
+            document.getElementById("content").innerHTML = "CONNECTED!!!!<br><br>" + document.getElementById("content").innerHTML;
+        }
+    
+        function onAndroidMessageReceived(message) {
+            document.getElementById("content").innerHTML = message + "<br><br>" + document.getElementById("content").innerHTML;
+        } */
+    
+    </script>
 </body>
 
 </html>
